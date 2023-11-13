@@ -1,4 +1,3 @@
-
 import {commonAPI} from './commonAPI'
 
 //api to upload appointment details

@@ -108,7 +108,7 @@ function Home() {
 
             <section  >
                 <Container>
-                    <div className="row d-flex flex-wrap" style={{ height: '600px' }}>
+                    <div className="row d-flex flex-wrap" style={{ height: '660px' }}>
                         <div className="col-lg-7  d-flex justify-content-center flex-column"  >
                             <h4>Why EliteCare Clinic?</h4>
                             <h1 style={{ color: ' rgb(54, 6, 98)', fontWeight: 'bold' }}>
