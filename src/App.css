@@ -5,6 +5,20 @@
   
 
 }
+.vertical{
+  height:140px;
+ background-color:black;
+ width:0.8px
+}
+.horizontal{
+ width:220px;
+  background-color:black;
+  height:0.8px
+}
+.deptcol:hover{
+ 
+}
+
 @media only screen and (max-width: 600px) {
   *{
 overflow-x: hidden;
@@ -15,5 +29,13 @@ overflow-x: hidden;
   .titlehead{
 display: list-item;
   }
+  .utube{
+   width:400px;
+   height:400px
+  }
+  .deptrow{
+    margin-top: -250px;
+  }
+  
 }
 

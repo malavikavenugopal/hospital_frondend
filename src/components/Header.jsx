@@ -10,10 +10,10 @@ function Header() {
     <div>
       <br></br>
       <div style={{ flexWrap: 'nowrap' }} className='d-flex title '>
-        <Link to={'/'} style={{ textDecoration: 'none' }} ><h4  style={{ marginLeft: '50px', fontFamily: 'Agbalumo', color: ' rgb(54, 6, 98)' }}>EliteCare Clinic</h4>
+        <Link to={'/'} style={{ textDecoration: 'none' }} ><h4  style={{ marginLeft: '50px', fontFamily: 'Agbalumo', color: ' rgb(54, 6, 98)' }}><i class="fa-solid fa-hospital"></i> EliteCare Clinic</h4>
         </Link>
        
-        <div style={{ marginLeft: '1020px', color: 'rgb(60, 12, 57)', fontSize: '30px' }}>
+        <div style={{ marginLeft: '1000px', color: 'rgb(60, 12, 57)', fontSize: '30px' }}>
           <i class="fa-solid fa-phone fa-beat"></i>9232764893
         </div><h6>(Manager)</h6>
         {/* <Button className='rounded-4' style={{marginLeft:'1050px',backgroundColor:'rgb(60, 12, 57)',color:'white' }} variant="outline-dark">Book an Appointment</Button>
@@ -27,8 +27,8 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto ">
-            <Nav.Link className='titlehead' style={{ color: "white",display:'hide',fontFamily: 'Agbalumo'}} >EliteCare Clinic
-        </Nav.Link>
+         
+        <Navbar.Brand className='titlehead' style={{ color: "white",display:'hide',fontFamily: 'Agbalumo'}} >EliteCare Clinic</Navbar.Brand>
               <Nav.Link style={{ color: "white" }} href="/">HOME</Nav.Link>
 
               <Nav.Link style={{ color: "white" }} href="/department">DEPARTMENTS</Nav.Link>

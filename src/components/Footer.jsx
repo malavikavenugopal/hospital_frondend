@@ -10,7 +10,7 @@ function Footer() {
                 <div className="col-lg-3">
                    
 <h5 style={{marginTop:'30px',fontFamily:'Agbalumo',fontSize:'25px'}}>EliteCare Clinic</h5>
-<p style={{fontSize:'14px',textAlign:'justify'}}>Every life is precious to us. You are important, and we care for you. We at Amrita Hospitals are there for you when you need us the most. Our hospital is where science, technology, and research merge to embrace good health. We are a community of physician</p>
+<p style={{fontSize:'14px',textAlign:'justify'}}>Every life is precious to us. You are important, and we care for you. We at EliteCare Clinic are there for you when you need us the most. Our hospital is where science, technology, and research merge to embrace good health. We are a community of physician</p>
                    
                 </div>
       
@@ -18,7 +18,7 @@ function Footer() {
 
                               
                    <h5 style={{marginTop:'40px'}}>Address</h5>
-                   <p style={{fontSize:'24px',textAlign:'justify'}}>EliteCare Clinic, Thrissur,Kerala, India - 680 586</p>
+                   <p style={{fontSize:'20px',textAlign:'justify'}}>EliteCare Clinic, Thrissur,Kerala, India - 680 586</p>
                    <a href="https://www.google.co.in/maps/@10.694829,76.3386232,20z?entry=ttu" target='_blank'><button style={{ width: '150px',  fontWeight: "bold" }} className='btn rounded-4 btn-light'><i class="fa-solid fa-location-dot"></i> Get Direction</button></a>
                 </div>
                 <div className="col-lg-3">

@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Table from 'react-bootstrap/Table';
 import { deleteAppointment, getAppointment, uploadAppointment } from '../../services/allAPI';
+
 
 function Home() {
     const [deleteStatus, setDeleteStatus] = useState(false)
@@ -31,7 +34,7 @@ function Home() {
         const response = await uploadAppointment(appointment)
         console.log(response);
         if (response.status >= 200 && response.status < 300) {
-            alert(`${response.data.fname} successfully uploaded`)
+           alert(`${response.data.fname} successfully uploaded`)
 
 
 
@@ -54,7 +57,7 @@ function Home() {
             )
         }
         else {
-            alert('something went wrong try again later')
+          alert('Something went wrong try again later')
             console.log(response)
         }
 
@@ -108,7 +111,8 @@ function Home() {
 
             <section  >
                 <Container>
-                    <div className="row d-flex flex-wrap" style={{ height: '660px' }}>
+                    <div>
+                    <div className="row d-flex flex-wrap" style={{ height: '400px' }}>
                         <div className="col-lg-7  d-flex justify-content-center flex-column"  >
                             <h4>Why EliteCare Clinic?</h4>
                             <h1 style={{ color: ' rgb(54, 6, 98)', fontWeight: 'bold' }}>
@@ -117,7 +121,7 @@ function Home() {
 
                         </div>
                         <div className="col-lg-5 d-flex justify-content-center flex-column">
-                            <p style={{ fontSize: '15px' }}>Your health is our priority. Amrita Hospital ensures you and your family receive the best possible medical care and assistance. We strive to create a warm and safe healing environment for you and your family. Over the past decade, Amrita has been unflinchingly devoted to improving healthcare and treatment. Medical specialists have been working diligently to conduct research and educate future generations of doctors and healthcare workers.
+                            <p style={{ fontSize: '15px' }}>Your health is our priority. EliteCare Clinic ensures you and your family receive the best possible medical care and assistance. We strive to create a warm and safe healing environment for you and your family. Over the past decade, EliteCare has been unflinchingly devoted to improving healthcare and treatment. Medical specialists have been working diligently to conduct research and educate future generations of doctors and healthcare workers.
                                 <br></br>   As our entire team works toward your speedy recovery, we utilize highly-trained doctors and cutting-edge technology in the field of medical sciences.</p>
 
                             <div className="d-flex flex-wrap">
@@ -131,12 +135,16 @@ function Home() {
                                 </div>
                             </div>
                         </div>
+                      
                     </div>
+                    <iframe width="1283" className='utube' height="510" src="https://www.youtube.com/embed/l5m-bzw6b2Q" title="Take a Tour of EliteCare 24-Hour Emergency Room - League City, Texas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                
                 </Container>
 
 
             </section>
-
+<br></br>
             <section className="  text-dark bg-dark "  >
                 <div className="container">
                     <div className="row">
@@ -157,7 +165,7 @@ function Home() {
                     <div className="row no-gutters ">
                         <div className="col-md-6 pr-md-5 pr-0 pt-md-5 pt-0 pb-md-5 pb-0" >
 
-                            <div className="col-md " style={{ marginTop: '40px', backgroundColor: 'rgb(54, 6, 98)' }}>
+                            <div className="time " style={{ marginTop: '100px', backgroundColor: 'rgb(54, 6, 98)' }}>
                                 <br></br>
                                 <h2 style={{ color: 'white', textAlign: 'center' }} >Opening Hour <span>Medical Clinic</span></h2>
 
@@ -291,7 +299,7 @@ function Home() {
                     <div className='d-flex'>
                         <h4 style={{ color: 'rgb(60, 12, 57)', fontWeight: 'bold' }}>All Appointments ({allAppointment.length})</h4>
 
-                        <h6 style={{ marginLeft: '800px', fontWeight: 'bold' }}>Today Date:{date}</h6>
+                        <h6 style={{ marginLeft: '', fontWeight: 'bold' }}>Today Date:{date}</h6>
                     </div>
 
                     <br></br>
@@ -341,6 +349,7 @@ function Home() {
 
                 </Container>
 
+                <ToastContainer position='top-center' theme='colored' autoClose={2000} />
 
             </section>
         </div>

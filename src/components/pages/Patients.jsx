@@ -7,6 +7,8 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import { deletePatient, getPatient, uploadPatient } from '../../services/allAPI';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Patients() {
   const [show, setShow] = useState(false);
@@ -27,33 +29,44 @@ function Patients() {
 
   })
   const handleAddPatient = async () => {
-    const response = await uploadPatient(patient)
-    console.log(response);
-
-    if (response.status >= 200 && response.status < 300) {
-      alert(`${response.data.fname} successfully uploaded`)
 
 
+    const { fname, lname, dob, email, address, phone, state, pin } = patient
+    if (!fname || !lname || !dob || !email || !address || !phone || !state || !pin) {
+      toast.warning('Please fill the form')
 
-      //making the state value none
-      setPatient(
-        {
-          fname: '',
-          lname: '',
-          dob: "",
-          email: "",
-          address: '',
-          phone: '',
-          state: "",
-          pin: ""
-
-        }
-      )
     }
     else {
-      alert('something went wrong try again later')
-      console.log(response)
+      const response = await uploadPatient(patient)
+      console.log(response);
+      if (response.status >= 200 && response.status < 300) {
+        toast.success(`${response.data.fname} successfully uploaded`)
+
+
+
+        //making the state value none
+        setPatient(
+          {
+            fname: '',
+            lname: '',
+            dob: "",
+            email: "",
+            address: '',
+            phone: '',
+            state: "",
+            pin: ""
+
+          }
+        )
+      }
+      else {
+        toast.warning('Something went wrong try again later')
+        console.log(response)
+      }
     }
+
+
+
   }
   const getAllPatients = async () => {
     const response = await getPatient()
@@ -67,13 +80,13 @@ function Patients() {
     const response = await deletePatient(id);
     console.log(response);
     setDeleteStatus(true)
-}
+  }
 
 
   useEffect(() => {
     getAllPatients()
     setDeleteStatus(false)
-  },[deleteStatus,allPatient])
+  }, [deleteStatus, allPatient])
 
   return (
     <>
@@ -184,8 +197,8 @@ function Patients() {
                 </div>
               </div>
 
-              <button className='btn btn-outline-success ' onClick={handleAddPatient} style={{ width: '70px', marginTop: '30px' }}>Add</button>
-              
+              <button className='btn btn-outline-success ' onClick={handleAddPatient} style={{ width: '70px', marginTop: '30px', marginLeft: "20px" }}>Add</button>
+
             </div>
           </div>
         </div>
@@ -198,7 +211,7 @@ function Patients() {
           <Col lg={12} sm={12}>
             <Table striped bordered hover variant="light" style={{ tableLayout: "fixed" }}>
               <thead>
-                <tr style={{textAlign:'center'}} >
+                <tr style={{ textAlign: 'center' }} >
                   <th style={{ backgroundColor: 'rgb(54, 6, 98)', color: 'white' }}>ID</th>
                   <th style={{ backgroundColor: 'rgb(54, 6, 98)', color: 'white' }}>First Name</th>
                   <th style={{ backgroundColor: 'rgb(54, 6, 98)', color: 'white' }}>Last Name</th>
@@ -215,18 +228,18 @@ function Patients() {
                   allPatient?.length > 0 ?
                     allPatient.map((item) => (
                       <>
-                      <tr style={{textAlign:'center'}}>
-                        <td>{item.id}</td>
-                        <td>{item.fname}</td>
-                        <td>
-                          {item.lname}
-                        </td>
-                        <td>{item.phone}</td>
-                       <td>{item.address}</td>
+                        <tr style={{ textAlign: 'center' }}>
+                          <td>{item.id}</td>
+                          <td>{item.fname}</td>
+                          <td>
+                            {item.lname}
+                          </td>
+                          <td>{item.phone}</td>
+                          <td>{item.address}</td>
 
-                        <td><button   onClick={() => handleDelete(item?.id)} className='btn' ><i style={{ color: 'red' }} class="fa-solid fa-trash"></i></button></td>
-                      
-    
+                          <td><button onClick={() => handleDelete(item?.id)} className='btn' ><i style={{ color: 'red' }} class="fa-solid fa-trash"></i></button></td>
+
+
                         </tr>
                       </>
                     )) : <p>Nothing to Display</p>
@@ -236,6 +249,8 @@ function Patients() {
 
           </Col>
         </Row>
+        <ToastContainer position='top-center' theme='colored' autoClose={2000} />
+
       </div>
     </>
   )
