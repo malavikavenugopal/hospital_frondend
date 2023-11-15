@@ -277,7 +277,7 @@ function Home() {
                                         >
 
 
-                                            <option selected>Select Department</option>
+                                            <option selected>Select Doctor</option>
 
                                             
                                             {
