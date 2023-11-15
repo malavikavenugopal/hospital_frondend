@@ -13,7 +13,7 @@ function Header() {
         <Link to={'/'} style={{ textDecoration: 'none' }} ><h4  style={{ marginLeft: '50px', fontFamily: 'Agbalumo', color: ' rgb(54, 6, 98)' }}><i class="fa-solid fa-hospital"></i> EliteCare Clinic</h4>
         </Link>
        
-        <div style={{ marginLeft: '1000px', color: 'rgb(60, 12, 57)', fontSize: '30px' }}>
+        <div style={{ marginLeft: '950px', color: 'rgb(60, 12, 57)', fontSize: '30px' }}>
           <i class="fa-solid fa-phone fa-beat"></i>9232764893
         </div><h6>(Manager)</h6>
         {/* <Button className='rounded-4' style={{marginLeft:'1050px',backgroundColor:'rgb(60, 12, 57)',color:'white' }} variant="outline-dark">Book an Appointment</Button>
