@@ -31,44 +31,35 @@ function Home() {
     console.log(appointment);
     const handleuploaddept = async () => {
 
+        const response = await uploadAppointment(appointment)
+        console.log(response);
+        if (response.status >= 200 && response.status < 300) {
+           alert(`${response.data.fname} successfully uploaded`)
 
-        const {fname,lname,phone,date,time,dept} = appointment
-        if(!fname || !lname || !phone || !date || !time || !dept){
-            toast.warning('Please fill the form')
+
+
+            //making the state value none
+            setAppointment(
+                {
+                    fname: '',
+                    lname: '',
+                    age: '',
+                    phone: '',
+                    address: '',
+                    gender: '',
+                    date: '',
+                    time: '',
+                    dept: '',
+                    emailid: '',
+                    pincode: ''
+
+                }
+            )
         }
-        else{
-            const response = await uploadAppointment(appointment)
-            console.log(response);
-            if (response.status >= 200 && response.status < 300) {
-            toast.success(`${response.data.fname} successfully uploaded`)
-     
-     
-     
-                 //making the state value none
-                 setAppointment(
-                     {
-                         fname: '',
-                         lname: '',
-                         age: '',
-                         phone: '',
-                         address: '',
-                         gender: '',
-                         date: '',
-                         time: '',
-                         dept: '',
-                         emailid: '',
-                         pincode: ''
-     
-                     }
-                 )
-             }
-             else {
-             toast.error('Something went wrong try again later')
-                 console.log(response)
-             }
+        else {
+          alert('Something went wrong try again later')
+            console.log(response)
         }
- 
-       
 
     }
     const getAllAppointment = async () => {
