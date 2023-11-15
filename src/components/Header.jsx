@@ -2,10 +2,26 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Button from 'react-bootstrap/Button';
+import { useEffect, useState } from 'react';
+import Badge from 'react-bootstrap/Badge';
 import { Link } from 'react-router-dom';
+import { getAppointment } from '../services/allAPI';
 function Header() {
+
+  const [allAppointment, setAllAppointment] = useState([])
+
+
+
+  const getAllAppointment = async () => {
+    const response = await getAppointment()
+    const { data } = response
+    console.log(data);
+    setAllAppointment(data)
+  }
+  useEffect(() => {
+    getAllAppointment()
+}, [])
+
   return (
     <div>
       <br></br>
@@ -23,17 +39,20 @@ function Header() {
       <Navbar expand="lg" className="" style={{ backgroundColor: " rgb(54, 6, 98)" }}>
 
         <Container>
-          {/*        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
+        <Navbar.Brand className='titlehead' style={{ color: "white",display:'hide',fontFamily: 'Agbalumo'}} >EliteCare Clinic</Navbar.Brand>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto ">
+            <Nav className="me-auto " style={{padding:'10px'}}>
          
-        <Navbar.Brand className='titlehead' style={{ color: "white",display:'hide',fontFamily: 'Agbalumo'}} >EliteCare Clinic</Navbar.Brand>
-              <Nav.Link style={{ color: "white" }} href="/">HOME</Nav.Link>
+           
+              <Link to={'/'}  style={{ color: "white" ,marginLeft:'10px',textDecoration:'none'}}>HOME </Link>
+              <Link to={'/department'}  style={{ color: "white",marginLeft:'10px',textDecoration:'none' }}> DEPARTMENTS</Link>
+              <Link to={'/patients'}  style={{ color: "white" ,marginLeft:'10px',textDecoration:'none'}}> PATIENTS<Badge bg="secondary">{allAppointment.length}</Badge></Link>
 
-              <Nav.Link style={{ color: "white" }} href="/department">DEPARTMENTS</Nav.Link>
+            
 
-              <Nav.Link style={{ color: "white" }} href="/patients">PATIENTS</Nav.Link>
+           
               {/*   <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">

@@ -34,32 +34,38 @@ function Department() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleAdd = async () => {
+const{ departmentname,  description,contact, services, doctors} = department
+if( !departmentname ||  !description  ||  !contact ||  ! services ||  ! doctors){
+    toast.warning('Please Fill the Form Completely')
+}
+else{
 
+    const response = await uploadDepartment(department)
+    console.log(response);
 
-        const response = await uploadDepartment(department)
-        console.log(response);
+    if (response.status >= 200 && response.status < 300) {
+        toast.success(`${response.data.departmentname} successfully uploaded`)
 
-        if (response.status >= 200 && response.status < 300) {
-            toast.success(`${response.data.departmentname} successfully uploaded`)
+        handleClose()
 
-            handleClose()
+        //making the state value none
+        setDepartment(
+            {
+                departmentname: "",
+                description: "",
+                contact: "",
+                services: "",
+                doctors: []
 
-            //making the state value none
-            setDepartment(
-                {
-                    departmentname: "",
-                    description: "",
-                    contact: "",
-                    services: "",
-                    doctors: []
+            }
+        )
+    }
+    else {
+        toast.error('Something went wrong try again later')
+        console.log(response)
+    }
 
-                }
-            )
-        }
-        else {
-            toast.error('Something went wrong try again later')
-            console.log(response)
-        }
+}
 
     }
     const getAllDepartment = async () => {
@@ -78,30 +84,40 @@ function Department() {
         setDeleteStatus(true)
     }
     const handledoctor = async () => {
-        const response = await uploadDoctor(doctor)
-        console.log(response);
-
-        if (response.status >= 200 && response.status < 300) {
-            toast.success(`${response.data.name} successfully uploaded`)
 
 
-
-
-            setDoctor(
-                {
-                    name: "",
-                    dept: "",
-                    url: "",
-                    edu: ""
-
-                }
-            )
+        const {name,dept,url,edu} = doctor
+        if(!name || !dept || !url || !edu)
+        {
+            toast.warning('Please Fill the Form Completely')
         }
-        else {
-            toast.warning('Something went wrong try again later')
-            console.log(response)
+        else{
+            const response = await uploadDoctor(doctor)
+            console.log(response);
+    
+            if (response.status >= 200 && response.status < 300) {
+                toast.success(`${response.data.name} successfully uploaded`)
+    
+    
+    
+    
+                setDoctor(
+                    {
+                        name: "",
+                        dept: "",
+                        url: "",
+                        edu: ""
+    
+                    }
+                )
+            }
+            else {
+                toast.warning('Something went wrong try again later')
+                console.log(response)
+            }
+    
         }
-
+      
     }
     const getAllDoctor = async () => {
         const response = await getDoctor()
@@ -423,7 +439,33 @@ function Department() {
                             <div className="col-lg-3">
                                 <h5>Add Doctor Details</h5>
                                 <TextField style={{ marginTop: '10px' }} className="w-100" id="outlined-basic" label=" Name" onChange={(e) => setDoctor({ ...doctor, name: e.target.value })} variant="outlined" />
-                                <TextField style={{ marginTop: '10px' }} onChange={(e) => setDoctor({ ...doctor, dept: e.target.value })} className="w-100" id="outlined-basic" label="Speciality " variant="outlined" />
+
+                                <select  style={{ marginTop: '10px' }}  class="form-select" aria-label="Default select example"
+                                           onChange={(e) => setDoctor({ ...doctor, dept: e.target.value })}
+                                        >
+
+
+                                            <option selected>Select Department</option>
+
+                                            
+                                            {
+                                                allDepartment?.length>0?
+                                                allDepartment.map((dept)=>(
+                                                    
+                                                                <option value={dept.departmentname}>{dept.departmentname}</option>
+                                                           
+                                                   
+                                                    
+                                              
+
+                                                   
+                                                )):null
+                                            }
+                                           
+                                        </select>
+
+                        
+                              
                                 <TextField style={{ marginTop: '10px' }} className="w-100" id="outlined-basic" onChange={(e) => setDoctor({ ...doctor, edu: e.target.value })} label="Qualitification " variant="outlined" />
                                 <TextField style={{ marginTop: '10px' }} onChange={(e) => setDoctor({ ...doctor, url: e.target.value })} className="w-100" id="outlined-basic" label="Image URL " variant="outlined" />
                                 <button onClick={handledoctor} style={{ marginTop: '10px' }} className='btn btn-success w-50  '>Add</button>

@@ -1,4 +1,4 @@
-/* import {commonAPI} from './commonAPI'
+/*  import {commonAPI} from './commonAPI'
 
 //api to upload appointment details
  export const uploadAppointment = async (reqbody)=>{
@@ -80,9 +80,9 @@ export const getPatient = async ()=>{
 //api to delete patients
 export const deletePatient = async (id)=>{
     return await commonAPI('DELETE',`http://localhost:5001/patients/${id}`,{})
-} */
-
-import {commonAPI} from './commonAPI'
+} 
+ */
+ import {commonAPI} from './commonAPI'
 
 //api to upload appointment details
  export const uploadAppointment = async (reqbody)=>{
@@ -164,4 +164,4 @@ export const getPatient = async ()=>{
 //api to delete patients
 export const deletePatient = async (id)=>{
     return await commonAPI('DELETE',`https://hospitalbackend-c2ku.onrender.com/patients/${id}`,{})
-}
+} 
