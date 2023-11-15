@@ -2,25 +2,11 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { useEffect, useState } from 'react';
+
 import Badge from 'react-bootstrap/Badge';
 import { Link } from 'react-router-dom';
-import { getAppointment } from '../services/allAPI';
 function Header() {
 
-  const [allAppointment, setAllAppointment] = useState([])
-
-
-
-  const getAllAppointment = async () => {
-    const response = await getAppointment()
-    const { data } = response
-    console.log(data);
-    setAllAppointment(data)
-  }
-  useEffect(() => {
-    getAllAppointment()
-}, [])
 
   return (
     <div>
@@ -48,7 +34,7 @@ function Header() {
            
               <Link to={'/'}  style={{ color: "white" ,marginLeft:'10px',textDecoration:'none'}}>HOME </Link>
               <Link to={'/department'}  style={{ color: "white",marginLeft:'10px',textDecoration:'none' }}> DEPARTMENTS</Link>
-              <Link to={'/patients'}  style={{ color: "white" ,marginLeft:'10px',textDecoration:'none'}}> PATIENTS<Badge bg="secondary">{allAppointment.length}</Badge></Link>
+              <Link to={'/patients'}  style={{ color: "white" ,marginLeft:'10px',textDecoration:'none'}}> PATIENTS</Link>
 
             
 
